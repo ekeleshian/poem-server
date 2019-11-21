@@ -1,12 +1,9 @@
-import re
-import string
-from flask import Flask, request, Response
+from flask import Flask, Response
 from flask_cors import CORS, cross_origin
 from fastai.text import *
-from pdb import set_trace
 app = Flask(__name__)
 CORS(app, support_credentials=True)
-PATH = Path('/Users/ekeleshian/poem-server/')
+PATH = Path('/')
 
 @app.route('/classify/<words>/<word_count>', methods=['GET'])
 @cross_origin(supports_credentials=True)
