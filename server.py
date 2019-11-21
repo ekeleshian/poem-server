@@ -8,13 +8,14 @@ app = Flask(__name__)
 CORS(app, support_credentials=True)
 PATH = Path('/Users/ekeleshian/poem-server/')
 
-@app.route('/classify/<words>', methods=['GET'])
+@app.route('/classify/<words>/<word_count>', methods=['GET'])
 @cross_origin(supports_credentials=True)
-def classify(words):
+def classify(words, word_count):
     response = Response()
     words = str(words)
+    word_count = int(word_count)
     words = words.replace('_', ' ')
-    res = learn.predict(words, 100, temperature=1.5, min_p=0.001, no_unk=True)
+    res = learn.predict(words, word_count, temperature=1.5, min_p=0.001, no_unk=True)
     res = res.replace('xxbos', '')
     idx = res[::-1].find('.')
     if idx == -1:
