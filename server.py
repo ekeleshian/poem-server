@@ -3,7 +3,7 @@ from flask_cors import CORS, cross_origin
 from fastai.text import *
 app = Flask(__name__)
 CORS(app, support_credentials=True)
-PATH = Path('/')
+PATH = Path('/Users/ekeleshian/poem-server/')
 
 @app.route('/classify/<words>/<word_count>', methods=['GET'])
 @cross_origin(supports_credentials=True)
